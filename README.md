@@ -24,3 +24,6 @@ http://pugetsound.onebusaway.org/where/sign/stop.action?id=1_578
 
 OneBusAway REST API:
 http://developer.onebusaway.org/modules/onebusaway-application-modules/1.1.13/api/where/index.html
+
+Steve Blanks legendary starup resources:
+http://steveblank.com/tools-and-blogs-for-entrepreneurs/
