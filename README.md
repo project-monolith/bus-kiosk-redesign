@@ -14,6 +14,9 @@ http://www.soundtransit.org/Developer-resources/Data-downloads
 GTFS Spec:
 https://developers.google.com/transit/gtfs/reference
 
+GTFS Dataset:
+http://developer.onebusaway.org/tmp/sound/gtfs/modified/1_gtfs.zip
+
 OneBusAway Kiosk mode we are working to replace:
 http://pugetsound.onebusaway.org/where/sign/stop.action?id=1_578
   (This is apprently wrapped by a frame on SDOT's side.
