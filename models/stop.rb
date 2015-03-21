@@ -1,3 +1,5 @@
+require 'date'
+
 class Stop
 
   attr_accessor :data, :time
@@ -36,6 +38,21 @@ class Stop
   KEY = IO.read('oba_rest_key.txt').strip
 
   def get_data
+    routes = routes_for_date(nil)
+    @data = routes.each_with_object(Array.new) do |route, routes|
+      routes << {
+        'number' => route.number,
+        'headsign' => route.headsign,
+        'stop_times' => route.stop_times
+      }
+    end
+
+    self
+  end
+
+  Route = Struct.new(:number, :headsign, :stop_times)
+
+  def routes_for_date(date)
     url = URI.parse(sprintf(STOP_INFO_URI, @stop_id, KEY))
     req = Net::HTTP::Get.new(url.to_s)
     res = Net::HTTP.start(url.host, url.port) { |http|
@@ -51,7 +68,8 @@ class Stop
       if data = body_blob['data']
         raw_routes = data['entry']['stopRouteSchedules']
 
-        routes = raw_routes.each_with_object(Hash.new) do |route_blob, routes|
+        raw_routes.each_with_object(Array.new) do |route_blob, routes|
+          route = Route.new
           route_id = route_blob['routeId']
 
           # grab the actual route number
@@ -63,9 +81,7 @@ class Stop
 
           route_info_blob = JSON.load(route_res.body)
 
-          routes[route_id] = {}
-
-          routes[route_id]['route_number'] =
+          route.number =
             if route_info = route_info_blob['data']
               route_info['entry']['shortName']
             else
@@ -75,27 +91,18 @@ class Stop
           # arrange stop time data
           stop_times = route_blob['stopRouteDirectionSchedules'].first['scheduleStopTimes']
 
-          stops = stop_times.each_with_object(Array.new) do |stop_time, stops|
+          route.stop_times = stop_times.each_with_object(Array.new) do |stop_time, stops|
             stops << Time.at(stop_time['arrivalTime'].to_s.slice(0..-4).to_i)
           end
 
-          headsign = route_blob['stopRouteDirectionSchedules'].first['tripHeadsign']
-
-          routes[route_id].merge!(
-            "headsign" => headsign,
-            "stops" => stops
-          )
-
+          route.headsign = route_blob['stopRouteDirectionSchedules'].first['tripHeadsign']
+          routes << route
         end
-
-        self.data = routes
       else
         raise "no data returned!"
       end
 
     end
-
-    self
   end
 
 end
