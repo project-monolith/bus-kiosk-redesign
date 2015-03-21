@@ -24,3 +24,5 @@ http://pugetsound.onebusaway.org/where/sign/stop.action?id=1_578
   (This is apprently wrapped by a frame on SDOT's side.
    Discussion here: https://groups.google.com/forum/#!topic/onebusaway-users/t6qvzP1DSRs)
 
+OneBusAway REST API:
+http://developer.onebusaway.org/modules/onebusaway-application-modules/1.1.13/api/where/index.html
