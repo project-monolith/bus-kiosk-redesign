@@ -6,9 +6,7 @@ Kiosk.Collections = Kiosk.Collections || {};
     'use strict';
 
     Kiosk.Collections.BusWaitTimes = Backbone.Collection.extend({
-
-        model: Kiosk.Models.BusWaitTimes
-
+      model: Kiosk.Models.BusWaitTime
     });
 
 })();

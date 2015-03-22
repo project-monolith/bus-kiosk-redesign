@@ -6,21 +6,25 @@ Kiosk.Models = Kiosk.Models || {};
     'use strict';
 
     Kiosk.Models.BusStation = Backbone.Model.extend({
+      defaults: {
+        id: 1,
+        // the collection of routes at this station
+        bus_routes: null
+      },
 
-        url: '',
+      url: 'http://localhost:4567/stop/1_578/trips',
 
-        initialize: function() {
-        },
+      initialize: function() {
+        this.fetch();
+      },
 
-        defaults: {
-        },
+      validate: function(attrs, options) {
+      },
 
-        validate: function(attrs, options) {
-        },
+      parse: function(response, options)  {
 
-        parse: function(response, options)  {
-            return response;
-        }
+        return response;
+      }
     });
 
 })();

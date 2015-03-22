@@ -6,9 +6,7 @@ Kiosk.Collections = Kiosk.Collections || {};
     'use strict';
 
     Kiosk.Collections.BusRoutes = Backbone.Collection.extend({
-
-        model: Kiosk.Models.BusRoutes
-
+      model: Kiosk.Models.BusRoute
     });
 
 })();
