@@ -53,5 +53,12 @@ class KioskDisplay < Sinatra::Base
     })
   end
 
+  get '/stops/:stop_id/proximity' do
+    stop_id = params[:stop_id]
+    stop = Stop.routes_for_stop_id(stop_id)
+
+    JSON.dump(stop.proximal)
+  end
+
   run! if app_file == $0
 end

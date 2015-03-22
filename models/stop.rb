@@ -2,16 +2,73 @@ require 'date'
 
 class Stop
 
-  attr_accessor :data, :time
+  attr_accessor :data, :time, :proximal
 
   def initialize(stop_id)
     @stop_id = stop_id
     @time = Time.now
     load_name
     get_data
+    load_map
+  end
+
+  NEARBY_STOPS_URI = 'http://api.pugetsound.onebusaway.org/api/where/stops-for-location.json?key=%s&lat=%s&lon=%s&radius=%s'
+
+  def load_map
+    @@proximals ||= Hash.new
+    if @@proximals[@stop_id]
+      @proximal = @@proximals[@stop_id] 
+      return
+    end
+
+    stop_url = URI.parse(sprintf(NEARBY_STOPS_URI, KEY, @coords.lat, @coords.lon, 100))
+    stop_req = Net::HTTP::Get.new(stop_url.to_s)
+    stop_res = Net::HTTP.start(stop_url.host, stop_url.port) do |http| 
+      http.request(stop_req)
+    end
+
+    raise "couldn't fetch map info!" if /^4/.match(stop_res.code)
+
+    blob = JSON.load(stop_res.body)
+
+    raise "no data returned" unless data = blob['data']
+
+    data['list'].map do |stop_blob|
+      result = {
+        'name' => stop_blob['name'],
+        'lat' => stop_blob['lat'],
+        'lon' => stop_blob['lon'],
+        'routes' => []
+      }
+
+      stop_blob['routeIds'].each do |id|
+        route_url = URI.parse(sprintf(ROUTE_INFO_URI, id, KEY))
+        route_req = Net::HTTP::Get.new(route_url.to_s)
+        route_res = Net::HTTP.start(route_url.host, route_url.port) do |http| 
+          http.request(route_req)
+        end
+
+        raise 'could not fetch map info!' if /^4/.match(route_res.code)
+        route_info_blob = JSON.load(route_res.body)
+
+        if route_data = route_info_blob['data']
+          result['routes'] << route_data['entry']['shortName']
+        else
+          nil
+        end
+
+      end
+
+      @@proximals[@stop_id] ||= []
+      @@proximals[@stop_id] << result
+    end
+
+    @proximal = @@proximals[@stop_id]
   end
 
   STOP_INFO_URI = 'http://api.pugetsound.onebusaway.org/api/where/stop/%s.json?key=%s'
+
+  Coords = Struct.new(:lon, :lat)
 
   def load_name
     stop_url = URI.parse(sprintf(STOP_INFO_URI, @stop_id, KEY))
@@ -27,6 +84,9 @@ class Stop
 
     @code = data['entry']['code']
     @name = data['entry']['name']
+
+    @coords = Coords.new(data['entry']['lon'],
+                         data['entry']['lat'])
   end
 
   REFRESH_PERIOD = 60 # seconds
