@@ -5,22 +5,22 @@ Kiosk.Models = Kiosk.Models || {};
 (function () {
     'use strict';
 
-    Kiosk.Models.BusRoute = Backbone.Model.extend({
+  Kiosk.Models.BusRoute = Backbone.Model.extend({
+    defaults: {
+      route_number: "-1",
+      description: "default description",
+    },
 
-        url: '',
+    initialize: function() {
+      this.set("wait_times", new Kiosk.Collections.BusWaitTimes());
+    },
 
-        initialize: function() {
-        },
+    validate: function(attrs, options) {
+    },
 
-        defaults: {
-        },
-
-        validate: function(attrs, options) {
-        },
-
-        parse: function(response, options)  {
-            return response;
-        }
-    });
+    parse: function(response, options)  {
+        return response;
+    }
+  });
 
 })();

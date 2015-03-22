@@ -13,8 +13,9 @@ Kiosk.Views = Kiosk.Views || {};
 
         events: {},
 
-        initialize: function () {
+        initialize: function (model) {
             //this.listenTo(this.model, 'change', this.render);
+          this.model = model;
         },
 
         render: function () {
