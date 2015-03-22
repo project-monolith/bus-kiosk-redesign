@@ -13,7 +13,7 @@ class Stop
 
   @@instances = {}
 
-  def self.for_id(stop_id)
+  def self.routes_for_stop_id(stop_id)
     if stop = @@instances[stop_id]
       now = Time.now
       if now - stop.time > REFRESH_PERIOD
@@ -39,18 +39,34 @@ class Stop
 
   def get_data
     routes = routes_for_date(nil)
-    @data = routes.each_with_object(Array.new) do |route, routes|
-      routes << {
+    @data = routes.map { |route|
+      stop_times = route.stop_times.drop_while { |time| time <= Time.now }.take(3)
+
+      wait_times = stop_times.map { |time| ((time - Time.now) / 60).round }
+      wait_times_within_30_minutes =
+        wait_times.select { |wait| wait <= 30 }
+
+      {
         'number' => route.number,
         'headsign' => route.headsign,
-        'stop_times' => route.stop_times
+        'wait_times' => wait_times_within_30_minutes
       }
-    end
+    }.reject { |route| 
+      route['wait_times'].empty? 
+    }.sort_by { |route| 
+      route['wait_times'].first
+    }
 
     self
   end
 
-  Route = Struct.new(:number, :headsign, :stop_times)
+  Route = Struct.new(:number, :headsign, :stop_times) do
+
+    def <=>(other)
+      self.stop_times.first <=> other.stop_times.first
+    end
+
+  end
 
   def routes_for_date(date)
     url = URI.parse(sprintf(STOP_INFO_URI, @stop_id, KEY))
@@ -94,6 +110,8 @@ class Stop
           route.stop_times = stop_times.each_with_object(Array.new) do |stop_time, stops|
             stops << Time.at(stop_time['arrivalTime'].to_s.slice(0..-4).to_i)
           end
+
+          route.stop_times.sort!
 
           route.headsign = route_blob['stopRouteDirectionSchedules'].first['tripHeadsign']
           routes << route

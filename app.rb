@@ -20,7 +20,7 @@ class KioskDisplay < Sinatra::Base
 
   get '/stops/:stop_id/trips' do
     stop_id = params[:stop_id]
-    stop = Stop.for_id(stop_id)
+    stop = Stop.routes_for_stop_id(stop_id)
     content_type 'application/json'
     JSON.dump(stop.data)
   end

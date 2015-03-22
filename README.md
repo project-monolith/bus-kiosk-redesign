@@ -2,6 +2,14 @@
 
 We're going to redesign the OBA web app that runs in the kiosks on 3rd Ave.
 
+## Building and running the backend
+
+1. Have a relatively modern version of ruby.
+2. `gem install bundler`
+3. `bundle install`
+4. `bundle exec ruby app.rb`
+5. Complain to Mike if it didn't work.
+
 ## Team Members
 
 REDACTED
