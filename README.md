@@ -19,8 +19,9 @@ http://localhost:4567/stops/1_578/trips
 ## Frontend
 
 ### Pre-reqs
-1. `brew install node`
+1. `brew install node010`
 2. `npm install grunt -g`
+3. `npm install gruntcli -g`
 
 ### Building and Running
 1. `cd prototype/kiosk_demo/`
