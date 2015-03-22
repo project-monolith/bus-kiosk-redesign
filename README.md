@@ -22,6 +22,8 @@ http://localhost:4567/stops/1_578/trips
 
 http://backbonetutorials.com/what-is-a-model/
 
+http://java.dzone.com/articles/backbone-tutorial-part-5
+
 ## Team Members
 
 REDACTED
