@@ -66,6 +66,7 @@ class Stop
 
       {
         'number' => route.number,
+        'id' => route.id,
         'headsign' => route.headsign,
         'description' => route.description,
         'wait_times' => wait_times
@@ -93,7 +94,7 @@ class Stop
   end
 
   ArrivalTime = Struct.new(:time, :current)
-  Route = Struct.new(:number, :description, :headsign, :arrival_times)
+  Route = Struct.new(:number, :id, :description, :headsign, :arrival_times)
 
   def get_routes
     arrivals = get_arrivals
@@ -116,6 +117,7 @@ class Stop
           if route_data = route_info_blob['data']
             routes[arrival.route_id] = 
               Route.new(route_data['entry']['shortName'],
+                        arrival.route_id,
                         route_data['entry']['description'],
                         arrival.headsign,
                         [])
