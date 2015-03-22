@@ -1,0 +1,62 @@
+[
+  {
+    "number": "1",
+    "headsign": "DOWNTOWN SEATTLE",
+    "wait_times": ["10", "17", "35"]
+  },
+  {
+    "number": "2",
+    "headsign": "DOWNTOWN SEATTLE",
+    "wait_times": ["5", "18", "40"]
+  },
+  {
+    "number": "3",
+    "headsign": "DOWNTOWN SEATTLE",
+    "wait_times": ["10", "27", "42"]
+  },
+  {
+    "number": "1",
+    "headsign": "DOWNTOWN SEATTLE",
+    "wait_times": ["10", "17", "35"]
+  },
+  {
+    "number": "2",
+    "headsign": "DOWNTOWN SEATTLE",
+    "wait_times": ["5", "18", "40"]
+  },
+  {
+    "number": "3",
+    "headsign": "DOWNTOWN SEATTLE",
+    "wait_times": ["10", "27", "42"]
+  },
+  {
+    "number": "1",
+    "headsign": "DOWNTOWN SEATTLE",
+    "wait_times": ["10", "17", "35"]
+  },
+  {
+    "number": "2",
+    "headsign": "DOWNTOWN SEATTLE",
+    "wait_times": ["5", "18", "40"]
+  },
+  {
+    "number": "3",
+    "headsign": "DOWNTOWN SEATTLE",
+    "wait_times": ["10", "27", "42"]
+  },
+  {
+    "number": "1",
+    "headsign": "DOWNTOWN SEATTLE",
+    "wait_times": ["10", "17", "35"]
+  },
+  {
+    "number": "2",
+    "headsign": "DOWNTOWN SEATTLE",
+    "wait_times": ["5", "18", "40"]
+  },
+  {
+    "number": "3",
+    "headsign": "DOWNTOWN SEATTLE",
+    "wait_times": ["10", "27", "42"]
+  }
+]
