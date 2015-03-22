@@ -17,13 +17,13 @@ Our approach is the following:
 
 ## Team Members
 
-Mike Dunsmuir
-Kyle McFarland
-Avery Sauer
-Jeff Hammerquist
-Matt Leber
-Alice Feng
-Timothy Shaw
+* Mike Dunsmuir
+* Kyle McFarland
+* Avery Sauer
+* Jeff Hammerquist
+* Matt Leber
+* Alice Feng
+* Timothy Shaw
 
 ## Technologies, APIs, and Datasets Utilized
 
