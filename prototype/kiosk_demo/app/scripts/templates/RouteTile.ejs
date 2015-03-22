@@ -4,10 +4,10 @@
   </div>
   <div class="bus-route--tileitem-section m-small m-align-left">
     <h2>Minutes</h2>
-    <ul>
+    <ul class="bus-route--waittimes">
       <% for(var i=0; i< wait_times.length; i++) {%>
         <% if (wait_times[i].wait > 0) {%>
-           <li><%= wait_times[i].wait %></li>
+           <li class="bus-route--waittimes-item"><%= wait_times[i].wait %></li>
         <% } %>
       <% } %>
     </ul>
