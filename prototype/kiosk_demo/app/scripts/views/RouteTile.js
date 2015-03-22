@@ -9,20 +9,22 @@ Kiosk.Views = Kiosk.Views || {};
 
         template: JST['app/scripts/templates/RouteTile.ejs'],
 
-        tagName: 'div',
-
-        id: '',
-
-        className: '',
+        tagName: 'bus-route--tileitem',
 
         events: {},
 
         initialize: function () {
-            this.listenTo(this.model, 'change', this.render);
+            //this.listenTo(this.model, 'change', this.render);
         },
 
         render: function () {
-            this.$el.html(this.template(this.model.toJSON()));
+            if (this.model) {
+              this.$el.html(this.template(this.model.toJSON()));
+            }
+            else {
+              this.$el.html(this.template());
+            }
+          return this;
         }
 
     });

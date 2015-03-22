@@ -8,11 +8,13 @@ window.Kiosk = {
     Routers: {},
     init: function () {
         'use strict';
-        console.log('Hello from Backbone!');
     }
 };
 
 $(document).ready(function () {
     'use strict';
     Kiosk.init();
+    // TODO Rename me
+    Kiosk.app = new Kiosk.Routers.Kiosk();
+    Backbone.history.start()
 });

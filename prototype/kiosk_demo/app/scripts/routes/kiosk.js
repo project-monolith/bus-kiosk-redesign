@@ -6,6 +6,13 @@ Kiosk.Routers = Kiosk.Routers || {};
     'use strict';
 
     Kiosk.Routers.Kiosk = Backbone.Router.extend({
+      routes: {
+        "": "startKiosk"
+      },
+
+      startKiosk: function() {
+        $('body').append(new Kiosk.Views.RouteTile().render().$el);
+      }
 
     });
 
