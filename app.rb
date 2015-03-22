@@ -24,11 +24,33 @@ class KioskDisplay < Sinatra::Base
     body "Hello World!"
   end
 
+  MAX_N_DISPLAYED = 9
+
+  # this returns the first 9 routes in the list
   get '/stops/:stop_id/trips' do
     stop_id = params[:stop_id]
     stop = Stop.routes_for_stop_id(stop_id)
-    content_type 'application/json'
+
+    data = stop.data
+    data['routes'] = data['routes'].take(MAX_N_DISPLAYED)
+
     JSON.dump(stop.data)
+  end
+
+  # this returns the remainder of the routes in a ticker-style string
+  get '/stops/:stop_id/ticker' do
+    stop_id = params[:stop_id]
+    stop = Stop.routes_for_stop_id(stop_id)
+
+    routes = stop.data['routes'].drop(MAX_N_DISPLAYED)
+
+    JSON.dump({
+      'text' => 
+        routes.map { |route|
+          waits = route['wait_times'].map { |time| time['wait'] }
+          "<b>Route #{route['number']}</b> in #{waits.join(", ")} mins."
+        }.join(' ')
+    })
   end
 
   run! if app_file == $0
