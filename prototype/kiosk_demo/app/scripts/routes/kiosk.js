@@ -14,7 +14,10 @@ Kiosk.Routers = Kiosk.Routers || {};
         var tile = new Kiosk.Views.RouteTile(
           new Kiosk.Models.BusRoute()
         );
-        $('body').append(tile.render().$el);
+        this.station = new Kiosk.Views.RouteContainer(
+          $('body'),
+          new Kiosk.Models.BusStation()
+        )
       }
 
     });
