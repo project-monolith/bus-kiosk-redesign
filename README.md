@@ -1,5 +1,7 @@
 # Kiosketeers!
 
+
+
 We're going to redesign the web app that runs in the kiosks on 3rd Ave.
 
 ## Challenge and Approach
@@ -17,7 +19,7 @@ Our approach is the following:
 
 ## Team Members
 
-* Mike Dunsmuir
+* Mike Dunsmuir, Senior Software Engineer @ Vaisala (https://github.com/mdunsmuir)
 * Kyle McFarland
 * Avery Sauer
 * Jeff Hammerquist
