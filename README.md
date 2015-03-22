@@ -1,6 +1,6 @@
 # Kiosketeers!
 
-We're going to redesign the One Bus Away web app that runs in the kiosks on 3rd Ave.
+We're going to redesign the web app that runs in the kiosks on 3rd Ave.
 
 ## Challenge and Approach
 
