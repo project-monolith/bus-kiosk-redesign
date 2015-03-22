@@ -7,7 +7,8 @@
     "lodash": "~2.4.1",
     "backbone": "~1.1.0",
     "modernizr": "~2.7.1",
-    "isotope": "~2.1.1"
+    "isotope": "~2.1.1",
+    "underscore": "~1.8.2"
   },
   "devDependencies": {}
 }
