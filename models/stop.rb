@@ -7,6 +7,26 @@ class Stop
   def initialize(stop_id)
     @stop_id = stop_id
     @time = Time.now
+    load_name
+    get_data
+  end
+
+  STOP_INFO_URI = 'http://api.pugetsound.onebusaway.org/api/where/stop/%s.json?key=%s'
+
+  def load_name
+    stop_url = URI.parse(sprintf(STOP_INFO_URI, @stop_id, KEY))
+    stop_req = Net::HTTP::Get.new(stop_url.to_s)
+    stop_res = Net::HTTP.start(stop_url.host, stop_url.port) do |http| 
+      http.request(stop_req)
+    end
+
+    raise "couldn't fetch stop info!" if /^4/.match(stop_res.code)
+
+    blob = JSON.load(stop_res.body)
+    raise "no data returned for stop info!" unless data = blob['data']
+
+    @code = data['entry']['code']
+    @name = data['entry']['name']
   end
 
   REFRESH_PERIOD = 60 # seconds
@@ -18,19 +38,16 @@ class Stop
       now = Time.now
       if now - stop.time > REFRESH_PERIOD
         puts "reloading stop data"
-        @@instances[stop_id] = self.new(stop_id).get_data
+        @@instances[stop_id] = self.new(stop_id)
       else
         puts "using old instance"
         stop
       end
     else
       puts "loading new stop data"
-      @@instances[stop_id] = self.new(stop_id).get_data
+      @@instances[stop_id] = self.new(stop_id)
     end
   end
-
-  STOP_INFO_URI = 
-    'http://api.pugetsound.onebusaway.org/api/where/schedule-for-stop/%s.json?key=%s'
 
   ROUTE_INFO_URI =
     'http://api.pugetsound.onebusaway.org/api/where/route/%s.json?key=%s'
@@ -39,7 +56,7 @@ class Stop
 
   def get_data
     routes = get_routes
-    @data = routes.map { |route|
+    routes_blob = routes.map { |route|
       wait_times = route.arrival_times.take(3).map do |arrival_time|
         {
           'wait' => ((arrival_time.time - Time.now) / 60).round,
@@ -54,6 +71,12 @@ class Stop
       }
     }.sort_by { |route| 
       route['wait_times'].first['wait']
+    }
+
+    @data = { 
+      'id' => @code,
+      'name' => @name,
+      'routes' => routes_blob
     }
 
     self
