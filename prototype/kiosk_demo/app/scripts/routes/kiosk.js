@@ -11,7 +11,13 @@ Kiosk.Routers = Kiosk.Routers || {};
       },
 
       startKiosk: function() {
-        $('body').append(new Kiosk.Views.RouteTile().render().$el);
+        var tile = new Kiosk.Views.RouteTile(
+          new Kiosk.Models.BusRoute()
+        );
+        this.station = new Kiosk.Views.RouteContainer(
+          $('body'),
+          new Kiosk.Models.BusStation()
+        )
       }
 
     });

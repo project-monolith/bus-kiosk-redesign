@@ -15,14 +15,16 @@ Kiosk.Models = Kiosk.Models || {};
       url: 'http://localhost:4567/stops/1_578/trips',
 
       initialize: function() {
-        this.fetch();
+        this.set("bus_routes",  new Kiosk.Collections.BusRoutes());
       },
 
       validate: function(attrs, options) {
       },
 
       parse: function(response, options)  {
-
+        this.set("name", response.name);
+        this.set("id", response.id);
+        this.get("bus_routes").set(response.routes);
         return response;
       }
     });

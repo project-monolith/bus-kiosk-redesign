@@ -1,11 +1,19 @@
 <div class="bus-route--tileitem m-align-left">
   <div class="bus-route--tileitem-section m-large m-align-left">
-    <h1>8</h1>
+    <h1><%= number %></h1>
   </div>
   <div class="bus-route--tileitem-section m-small m-align-left">
     <h2>Minutes</h2>
+    <ul>
+      <% for(var i=0; i< wait_times.length; i++) {%>
+        <% if (wait_times[i].wait > 0) {%>
+           <li><%= wait_times[i].wait %></li>
+        <% } %>
+      <% } %>
+    </ul>
   </div>
   <div class="bus-route--tileitem m-footer">
+    <h3><%= description %></h3>
   </div>
 </div>
 
