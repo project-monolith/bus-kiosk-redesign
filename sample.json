@@ -1,62 +1,132 @@
 [
   {
-    "number": "1",
-    "headsign": "DOWNTOWN SEATTLE",
-    "wait_times": ["10", "17", "35"]
+    "number": "36",
+    "description": "Othello Stn - Beacon Hill - Downtown",
+    "wait_times": [
+      {
+        "wait": -4,
+        "current": true
+      },
+      {
+        "wait": 7,
+        "current": true
+      },
+      {
+        "wait": 21,
+        "current": true
+      }
+    ]
+  },
+  {
+    "number": "D Line",
+    "description": "Seattle Blue Ridge to Crown Hill to Ballard to Sea",
+    "wait_times": [
+      {
+        "wait": -4,
+        "current": true
+      },
+      {
+        "wait": 10,
+        "current": true
+      },
+      {
+        "wait": 29,
+        "current": true
+      }
+    ]
+  },
+  {
+    "number": "E Line",
+    "description": "Aurora Village to Downtown Seattle",
+    "wait_times": [
+      {
+        "wait": -3,
+        "current": true
+      },
+      {
+        "wait": 10,
+        "current": false
+      },
+      {
+        "wait": 25,
+        "current": false
+      }
+    ]
+  },
+  {
+    "number": "4",
+    "description": "E QA - Downtown - Judkins Pk",
+    "wait_times": [
+      {
+        "wait": 4,
+        "current": false
+      },
+      {
+        "wait": 34,
+        "current": true
+      }
+    ]
   },
   {
     "number": "2",
-    "headsign": "DOWNTOWN SEATTLE",
-    "wait_times": ["5", "18", "40"]
+    "description": "W QA - Downtown - Madrona Pk",
+    "wait_times": [
+      {
+        "wait": 8,
+        "current": true
+      },
+      {
+        "wait": 37,
+        "current": true
+      }
+    ]
   },
   {
-    "number": "3",
-    "headsign": "DOWNTOWN SEATTLE",
-    "wait_times": ["10", "27", "42"]
-  },
-  {
-    "number": "1",
-    "headsign": "DOWNTOWN SEATTLE",
-    "wait_times": ["10", "17", "35"]
-  },
-  {
-    "number": "2",
-    "headsign": "DOWNTOWN SEATTLE",
-    "wait_times": ["5", "18", "40"]
-  },
-  {
-    "number": "3",
-    "headsign": "DOWNTOWN SEATTLE",
-    "wait_times": ["10", "27", "42"]
-  },
-  {
-    "number": "1",
-    "headsign": "DOWNTOWN SEATTLE",
-    "wait_times": ["10", "17", "35"]
-  },
-  {
-    "number": "2",
-    "headsign": "DOWNTOWN SEATTLE",
-    "wait_times": ["5", "18", "40"]
-  },
-  {
-    "number": "3",
-    "headsign": "DOWNTOWN SEATTLE",
-    "wait_times": ["10", "27", "42"]
+    "number": "13",
+    "description": "Seattle Pacific - Downtown Seattle",
+    "wait_times": [
+      {
+        "wait": 19,
+        "current": true
+      },
+      {
+        "wait": 49,
+        "current": true
+      }
+    ]
   },
   {
     "number": "1",
-    "headsign": "DOWNTOWN SEATTLE",
-    "wait_times": ["10", "17", "35"]
+    "description": "Kinnear to Downtown",
+    "wait_times": [
+      {
+        "wait": 19,
+        "current": true
+      }
+    ]
   },
   {
-    "number": "2",
-    "headsign": "DOWNTOWN SEATTLE",
-    "wait_times": ["5", "18", "40"]
+    "number": "66",
+    "description": "Northgate TC to U-District to Downtown Seattle",
+    "wait_times": [
+      {
+        "wait": 22,
+        "current": false
+      },
+      {
+        "wait": 56,
+        "current": true
+      }
+    ]
   },
   {
-    "number": "3",
-    "headsign": "DOWNTOWN SEATTLE",
-    "wait_times": ["10", "27", "42"]
+    "number": "7",
+    "description": "Prentice St- Rainier Beach - Downtown",
+    "wait_times": [
+      {
+        "wait": 46,
+        "current": false
+      }
+    ]
   }
 ]

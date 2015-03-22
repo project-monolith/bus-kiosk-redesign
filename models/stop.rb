@@ -38,58 +38,41 @@ class Stop
   KEY = IO.read('oba_rest_key.txt').strip
 
   def get_data
-    routes = routes_for_date(nil)
+    routes = get_routes
     @data = routes.map { |route|
-      stop_times = route.stop_times.drop_while { |time| time <= Time.now }.take(3)
-
-      wait_times = stop_times.map { |time| ((time - Time.now) / 60).round }
-      wait_times_within_30_minutes =
-        wait_times.select { |wait| wait <= 30 }
+      wait_times = route.arrival_times.take(3).map do |arrival_time|
+        {
+          'wait' => ((arrival_time.time - Time.now) / 60).round,
+          'current' => arrival_time.current
+        }
+      end
 
       {
         'number' => route.number,
-        'headsign' => route.headsign,
-        'wait_times' => wait_times_within_30_minutes
+        'description' => route.headsign,
+        'wait_times' => wait_times
       }
-    }.reject { |route| 
-      route['wait_times'].empty? 
     }.sort_by { |route| 
-      route['wait_times'].first
+      route['wait_times'].first['wait']
     }
 
     self
   end
 
-  Route = Struct.new(:number, :headsign, :stop_times) do
+  ArrivalTime = Struct.new(:time, :current)
+  Route = Struct.new(:number, :headsign, :arrival_times)
 
-    def <=>(other)
-      self.stop_times.first <=> other.stop_times.first
-    end
+  def get_routes
+    arrivals = get_arrivals
+    routes = Hash.new
 
-  end
+    arrivals.each do |arrival|
 
-  def routes_for_date(date)
-    url = URI.parse(sprintf(STOP_INFO_URI, @stop_id, KEY))
-    req = Net::HTTP::Get.new(url.to_s)
-    res = Net::HTTP.start(url.host, url.port) { |http|
-      http.request(req)
-    }
-
-    if /^4/.match(res.code)
-      raise "got a 4*"
-
-    else
-      body_blob = JSON.load(res.body)
-
-      if data = body_blob['data']
-        raw_routes = data['entry']['stopRouteSchedules']
-
-        raw_routes.each_with_object(Array.new) do |route_blob, routes|
-          route = Route.new
-          route_id = route_blob['routeId']
-
-          # grab the actual route number
-          route_url = URI.parse(sprintf(ROUTE_INFO_URI, route_id, KEY))
+      route = 
+        if routes[arrival.route_id]
+          routes[arrival.route_id]
+        else
+          route_url = URI.parse(sprintf(ROUTE_INFO_URI, arrival.route_id, KEY))
           route_req = Net::HTTP::Get.new(route_url.to_s)
           route_res = Net::HTTP.start(route_url.host, route_url.port) do |http| 
             http.request(route_req)
@@ -97,29 +80,50 @@ class Stop
 
           route_info_blob = JSON.load(route_res.body)
 
-          route.number =
-            if route_info = route_info_blob['data']
-              route_info['entry']['shortName']
-            else
-              nil
-            end
-
-          # arrange stop time data
-          stop_times = route_blob['stopRouteDirectionSchedules'].first['scheduleStopTimes']
-
-          route.stop_times = stop_times.each_with_object(Array.new) do |stop_time, stops|
-            stops << Time.at(stop_time['arrivalTime'].to_s.slice(0..-4).to_i)
+          if route_data = route_info_blob['data']
+            routes[arrival.route_id] = 
+              Route.new(route_data['entry']['shortName'],
+                        route_data['entry']['description'],
+                        [])
+          else
+            nil
           end
-
-          route.stop_times.sort!
-
-          route.headsign = route_blob['stopRouteDirectionSchedules'].first['tripHeadsign']
-          routes << route
         end
+
+      next unless route
+
+      route.arrival_times << ArrivalTime.new(arrival.time, arrival.current)
+    end
+
+    routes.values
+  end
+
+  Arrival = Struct.new(:route_id, :current, :time)
+
+  ARRIVALS_URI = 'http://api.pugetsound.onebusaway.org/api/where/arrivals-and-departures-for-stop/%s.json?key=%s&minutesAfter=60'
+
+  def get_arrivals
+    url = URI.parse(sprintf(ARRIVALS_URI, @stop_id, KEY))
+    req = Net::HTTP::Get.new(url.to_s)
+    res = Net::HTTP.start(url.host, url.port) { |http| http.request(req) }
+
+    raise "couldn't connect to OBA!" if /^4/.match(res.code)
+
+    body_blob = JSON.load(res.body)
+    raise "no data; maybe bad stop ID?" unless data_blob = body_blob['data']
+
+    data_blob['entry']['arrivalsAndDepartures'].map do |arrival_blob|
+      arrival = Arrival.new(arrival_blob['routeId'])
+
+      if arrival_blob['predicted']
+        arrival.current = true
+        arrival.time = Time.at(arrival_blob['predictedArrivalTime'] / 1000)
       else
-        raise "no data returned!"
+        arrival.current = false
+        arrival.time = Time.at(arrival_blob['scheduledArrivalTime'] / 1000)
       end
 
+      arrival
     end
   end
 
