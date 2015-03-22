@@ -2,7 +2,23 @@ $icon-font-path: "/bower_components/bootstrap-sass-official/assets/fonts/bootstr
 
 @import 'bootstrap-sass-official/assets/stylesheets/bootstrap.scss';
 
-body {}
+body {
+  padding: 0;
+  margin: 0;
+}
+
+.bus-station--title {
+  background-color: #fbba2f;
+  height: 70px;
+  margin: 0;
+  padding: 0;
+  margin-top: -20px;
+  text-align: center;
+}
+
+.bus-station--title h3{
+  font-size: 45pt;
+}
 
 .bus-route--tileitem {
   width: 400px;
@@ -10,24 +26,31 @@ body {}
   padding: 0;
   margin: 0;
   border: 1px solid black;
+  text-transform: capitalize;
 }
 
 .bus-route--tileitem-section {
   height: 80%;
 }
 
+.bus-route--tileitem-section h1{
+  font-size: 74pt;
+}
+
 .m-large {
   width: 279px;
-  background-color:#f9c687;
 }
 
 .m-small {
   width: 119px;
-  background-color:#71ceb4;
 }
 
 .m-align-left {
   float:left;
+}
+
+.bus-route--waittimes {
+  list-style-type: none;
 }
 
 /* Style info for Newsticker */
@@ -36,7 +59,7 @@ body {}
 .tickercontainer { /* the outer div with the black border */
 border-top: 1px solid #000;
 background: #fff; 
-width: 738px;
+width: 1200px;
 height: 50px; 
 margin: 0; 
 padding: 0;
@@ -46,13 +69,12 @@ overflow: hidden;
 position: relative;
 left: 10px;
 top: 8px;
-width: 718px;
+width: 1200px;
 overflow: hidden;
 }
 ul.newsticker { /* that's your list */
 position: relative;
-left: 750px;
-font: bold 10px Verdana;
+font: bold 24pt Verdana;
 list-style-type: none;
 margin: 0;
 padding: 0;

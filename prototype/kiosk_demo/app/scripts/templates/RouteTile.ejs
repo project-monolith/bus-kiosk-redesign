@@ -3,17 +3,16 @@
     <h1><%= number %></h1>
   </div>
   <div class="bus-route--tileitem-section m-small m-align-left">
-    <h2>Minutes</h2>
     <ul class="bus-route--waittimes">
       <% for(var i=0; i< wait_times.length; i++) {%>
         <% if (wait_times[i].wait == "DUE"|| wait_times[i].wait > 0) {%>
-           <li class="bus-route--waittimes-item"><%= wait_times[i].wait %></li>
+          <li class="bus-route--waittimes-item"><h3><%= wait_times[i].wait %></h3></li>
         <% } %>
       <% } %>
     </ul>
   </div>
   <div class="bus-route--tileitem m-footer">
-    <h3><%= description %></h3>
+    <h3><%=  headsign.toLowerCase() %></h3>
   </div>
 </div>
 
