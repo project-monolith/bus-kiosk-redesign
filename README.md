@@ -18,6 +18,15 @@ http://localhost:4567/stops/1_578/trips
 
 ## Frontend
 
+### Pre-reqs
+1. `brew install node`
+2. `npm install grunt -g`
+
+### Building and Running
+1. `cd prototype/kiosk_demo/`
+2. `npm install`
+3. `grunt server`
+
 ### How to JavaScript
 
 http://backbonetutorials.com/what-is-a-model/
@@ -46,17 +55,6 @@ http://pugetsound.onebusaway.org/where/sign/stop.action?id=1_578
 
 OneBusAway REST API:
 http://developer.onebusaway.org/modules/onebusaway-application-modules/1.1.13/api/where/index.html
-
-Running the front-end:
-Pre-req:
-* Ruby (brew install ruby)
-* Middleman (gem install middleman)
-
-Setup:
-* bundle install
-
-Start:
-`foreman start`
 
 Get connected with the team:
 https://plus.google.com/hangouts/_/gvpy2bqi36up6sd4xc5orcncg4a
