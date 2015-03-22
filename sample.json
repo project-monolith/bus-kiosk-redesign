@@ -1,226 +1,154 @@
 {
-  "id": "600",
-  "name": "3rd Ave & Virginia St",
+  "id": "578",
+  "name": "3rd Ave & Pike St",
   "routes": [
     {
-      "number": "120",
-      "description": "Burien TC - Westwood Village - Downtown Seattle",
-      "wait_times": [
-        {
-          "wait": -3,
-          "current": true
-        },
-        {
-          "wait": 28,
-          "current": true
-        },
-        {
-          "wait": 52,
-          "current": true
-        }
-      ]
-    },
-    {
-      "number": "28",
-      "description": "Whittier Heights to Fremont to Downtown Seattle",
-      "wait_times": [
-        {
-          "wait": -2,
-          "current": true
-        },
-        {
-          "wait": 28,
-          "current": true
-        },
-        {
-          "wait": 55,
-          "current": false
-        }
-      ]
-    },
-    {
-      "number": "1",
-      "description": "Kinnear to Downtown",
-      "wait_times": [
-        {
-          "wait": -1,
-          "current": true
-        },
-        {
-          "wait": 28,
-          "current": true
-        },
-        {
-          "wait": 57,
-          "current": true
-        }
-      ]
-    },
-    {
       "number": "13",
+      "headsign": "SEATTLE PACIFIC UNIVERSITY SEATTLE CENTER W",
       "description": "Seattle Pacific - Downtown Seattle",
       "wait_times": [
         {
-          "wait": 0,
+          "wait": "DUE",
           "current": true
         },
         {
-          "wait": 30,
+          "wait": "26",
           "current": false
         },
         {
-          "wait": 60,
-          "current": false
+          "wait": "56",
+          "current": true
         }
-      ]
+      ],
+      "order": 0
     },
     {
-      "number": "16",
-      "description": "Northgate TC to Downtown Seattle",
+      "number": "1",
+      "headsign": "KINNEAR SEATTLE CENTER W",
+      "description": "Kinnear to Downtown",
       "wait_times": [
         {
-          "wait": 1,
+          "wait": "DUE",
           "current": true
         },
         {
-          "wait": 33,
+          "wait": "27",
+          "current": true
+        },
+        {
+          "wait": "55",
           "current": true
         }
-      ]
-    },
-    {
-      "number": "40",
-      "description": "Northgate TC to Ballard to Fremont to Westlake to",
-      "wait_times": [
-        {
-          "wait": 1,
-          "current": true
-        },
-        {
-          "wait": 36,
-          "current": true
-        },
-        {
-          "wait": 60,
-          "current": true
-        }
-      ]
-    },
-    {
-      "number": "33",
-      "description": "Discovery Park to Downtown Seattle",
-      "wait_times": [
-        {
-          "wait": 2,
-          "current": true
-        }
-      ]
-    },
-    {
-      "number": "D Line",
-      "description": "Seattle Blue Ridge to Crown Hill to Ballard to Sea",
-      "wait_times": [
-        {
-          "wait": 3,
-          "current": true
-        },
-        {
-          "wait": 20,
-          "current": true
-        },
-        {
-          "wait": 36,
-          "current": true
-        }
-      ]
+      ],
+      "order": 1
     },
     {
       "number": "E Line",
+      "headsign": "AURORA VILLAGE TRANSIT CENTER",
       "description": "Aurora Village to Downtown Seattle",
       "wait_times": [
         {
-          "wait": 5,
-          "current": true
-        },
-        {
-          "wait": 20,
-          "current": true
-        },
-        {
-          "wait": 32,
-          "current": true
-        }
-      ]
-    },
-    {
-      "number": "26",
-      "description": "East Green Lake to Downtown Seattle",
-      "wait_times": [
-        {
-          "wait": 10,
-          "current": true
-        },
-        {
-          "wait": 44,
-          "current": true
-        }
-      ]
-    },
-    {
-      "number": "24",
-      "description": "West Magnolia to Downtown Seattle",
-      "wait_times": [
-        {
-          "wait": 15,
-          "current": true
-        },
-        {
-          "wait": 45,
-          "current": true
-        }
-      ]
-    },
-    {
-      "number": "5",
-      "description": "Shoreline CC to Greenwood to Downtown Seattle",
-      "wait_times": [
-        {
-          "wait": 15,
-          "current": true
-        },
-        {
-          "wait": 44,
+          "wait": "2",
           "current": false
+        },
+        {
+          "wait": "17",
+          "current": false
+        },
+        {
+          "wait": "31",
+          "current": true
         }
-      ]
+      ],
+      "order": 2
+    },
+    {
+      "number": "D Line",
+      "headsign": "BALLARD UPTOWN",
+      "description": "Seattle Blue Ridge to Crown Hill to Ballard to Sea",
+      "wait_times": [
+        {
+          "wait": "2",
+          "current": true
+        },
+        {
+          "wait": "11",
+          "current": true
+        },
+        {
+          "wait": "31",
+          "current": true
+        }
+      ],
+      "order": 3
+    },
+    {
+      "number": "66",
+      "headsign": "NORTHGATE EASTLAKE",
+      "description": "Northgate TC to U-District to Downtown Seattle",
+      "wait_times": [
+        {
+          "wait": "3",
+          "current": true
+        },
+        {
+          "wait": "35",
+          "current": true
+        }
+      ],
+      "order": 4
+    },
+    {
+      "number": "36",
+      "headsign": "DOWNTOWN SEATTLE N BEACON HILL",
+      "description": "Othello Stn - Beacon Hill - Downtown",
+      "wait_times": [
+        {
+          "wait": "5",
+          "current": true
+        },
+        {
+          "wait": "22",
+          "current": true
+        },
+        {
+          "wait": "34",
+          "current": true
+        }
+      ],
+      "order": 5
     },
     {
       "number": "4",
+      "headsign": "E QUEEN ANNE SEATTLE CENTER E",
       "description": "E QA - Downtown - Judkins Pk",
       "wait_times": [
         {
-          "wait": 15,
+          "wait": "12",
           "current": true
         },
         {
-          "wait": 45,
-          "current": false
+          "wait": "41",
+          "current": true
         }
-      ]
+      ],
+      "order": 6
     },
     {
       "number": "2",
+      "headsign": "W QUEEN ANNE SEATTLE CENTER W",
       "description": "W QA - Downtown - Madrona Pk",
       "wait_times": [
         {
-          "wait": 18,
+          "wait": "14",
           "current": true
         },
         {
-          "wait": 47,
-          "current": false
+          "wait": "44",
+          "current": true
         }
-      ]
+      ],
+      "order": 7
     }
   ]
 }
