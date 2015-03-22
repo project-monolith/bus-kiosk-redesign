@@ -1,2 +1,14 @@
-<p>Your content here.</p>
+<!-- Include the ticker script -->
+<script src="bower_components/liScroller/jquery.li-scroller.1.0.js"></script>
 
+<!-- The Actual Ticker Data -->
+<ul class="bus-route-ticker" id="ticker">
+	<li>Route 26 in 23,43 mins.</li>
+</ul>
+
+<!-- The actual ticker; Travelocity controls speed -->
+<script type="text/javascript">
+$(function(){
+	$("ul#ticker").liScroll({travelocity: 0.15});
+});
+</script>
