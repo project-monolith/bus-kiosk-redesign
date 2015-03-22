@@ -1,10 +1,45 @@
 # Kiosketeers!
 
-We're going to redesign the OBA web app that runs in the kiosks on 3rd Ave.
+We're going to redesign the One Bus Away web app that runs in the kiosks on 3rd Ave.
 
-## Backend
+## Challenge and Approach
 
-### Building and Running
+At bus stops on and around 3rd Avenue in downtown Seattle, there are several display kiosks that currently run a specially styled version of One Bus Away to show incoming bus trips. These kiosks are intended to provide useful information to users of the bus system. However, we feel that the approach taken by the web application currently running on these kiosks could be improved upon.
+
+Our approach is the following:
+
+1. Interview real users of the current kiosk application on the street, and collect their feedback.
+2. Based on the aforementioned feedback, develop an alternative design or designs that we feel would offer an improved user experience.
+3. Interview more real users of the current kiosk application, this time also gathering feedback on the aforementioned designs.
+4. Refine designs further, assuming positive user feedback.
+5. Implement a functional wireframe prototype of the design, time permitting.
+6. Embellish prototype, time permitting.
+
+## Team Members
+
+Mike Dunsmuir
+Kyle McFarland
+Avery Sauer
+Jeff Hammerquist
+Matt Leber
+Alice Feng
+Timothy Shaw
+
+## Technologies, APIs, and Datasets Utilized
+
+In developing our prototype, we made use of:
+
+* Ruby with Sinatra/Thin for the backend service.
+* backbone.js, jQuery, Isotope for the front end.
+* One Bus Away REST API for static and real-time transit system data.
+* Mapbox.
+* GTFS data provided by Sound Transit.
+
+## Contributing
+
+This project currently consists of paired frontend/backend services. Instructions to build them follow, though they may be somewhat rough and incomplete. Send us some pull requests!
+
+### Building and Running the Backend
 
 1. Have a relatively modern version of ruby.
 2. `gem install bundler`
@@ -16,7 +51,7 @@ We're going to redesign the OBA web app that runs in the kiosks on 3rd Ave.
 
 http://localhost:4567/stops/1_578/trips
 
-## Frontend
+## Building and Running the Frontend
 
 ### Pre-reqs
 1. `brew install node010`
@@ -34,11 +69,7 @@ http://backbonetutorials.com/what-is-a-model/
 
 http://java.dzone.com/articles/backbone-tutorial-part-5
 
-## Team Members
-
-REDACTED
-
-## Resources
+## Assorted Resources
 
 Sound Transit's GTFS feed for all bus routes in greater Seattle area:
 http://www.soundtransit.org/Developer-resources/Data-downloads
