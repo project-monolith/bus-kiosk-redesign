@@ -66,7 +66,8 @@ class Stop
 
       {
         'number' => route.number,
-        'description' => route.headsign,
+        'headsign' => route.headsign,
+        'description' => route.description,
         'wait_times' => wait_times
       }
     }.sort_by { |route| 
@@ -85,7 +86,7 @@ class Stop
   end
 
   ArrivalTime = Struct.new(:time, :current)
-  Route = Struct.new(:number, :headsign, :arrival_times)
+  Route = Struct.new(:number, :description, :headsign, :arrival_times)
 
   def get_routes
     arrivals = get_arrivals
@@ -109,6 +110,7 @@ class Stop
             routes[arrival.route_id] = 
               Route.new(route_data['entry']['shortName'],
                         route_data['entry']['description'],
+                        arrival.headsign,
                         [])
           else
             nil
@@ -123,7 +125,7 @@ class Stop
     routes.values
   end
 
-  Arrival = Struct.new(:route_id, :current, :time)
+  Arrival = Struct.new(:route_id, :current, :time, :headsign)
 
   ARRIVALS_URI = 'http://api.pugetsound.onebusaway.org/api/where/arrivals-and-departures-for-stop/%s.json?key=%s&minutesAfter=60'
 
@@ -148,6 +150,7 @@ class Stop
         arrival.time = Time.at(arrival_blob['scheduledArrivalTime'] / 1000)
       end
 
+      arrival.headsign = arrival_blob['tripHeadsign']
       arrival
     end
   end
