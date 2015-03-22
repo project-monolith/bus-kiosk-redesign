@@ -72,7 +72,8 @@ class Stop
       }
     }.sort_by { |route| 
       route['wait_times'].first['wait']
-    }.each { |route|
+    }.each_with_index { |route, i|
+      route['order'] = i
       route['wait_times'].each { |wait| 
         if wait['wait'] <= 0
           wait['wait'] = 'DUE'
