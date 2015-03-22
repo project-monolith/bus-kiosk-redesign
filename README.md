@@ -16,6 +16,12 @@ We're going to redesign the OBA web app that runs in the kiosks on 3rd Ave.
 
 http://localhost:4567/stops/1_578/trips
 
+## Frontend
+
+### How to JavaScript
+
+http://backbonetutorials.com/what-is-a-model/
+
 ## Team Members
 
 REDACTED
