@@ -47,23 +47,23 @@ This project currently consists of paired frontend/backend services. Instruction
 4. `bundle exec ruby app.rb`
 5. Complain to Mike if it didn't work.
 
-### Example URL
+#### Example URL
 
 http://localhost:4567/stops/1_578/trips
 
-## Building and Running the Frontend
+### Building and Running the Frontend
 
-### Pre-reqs
+#### Pre-reqs
 1. `brew install node010`
 2. `npm install grunt -g`
 3. `npm install grunt-cli -g`
 
-### Building and Running
+#### Building and Running
 1. `cd prototype/kiosk_demo/`
 2. `npm install`
 3. `grunt server`
 
-### How to JavaScript
+#### How to JavaScript
 
 http://backbonetutorials.com/what-is-a-model/
 
