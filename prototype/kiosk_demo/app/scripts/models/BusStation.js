@@ -12,7 +12,7 @@ Kiosk.Models = Kiosk.Models || {};
         bus_routes: null
       },
 
-      url: 'http://localhost:4567/stop/1_578/trips',
+      url: 'http://localhost:4567/stops/1_578/trips',
 
       initialize: function() {
         this.fetch();
