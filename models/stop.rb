@@ -73,7 +73,13 @@ class Stop
     }.sort_by { |route| 
       route['wait_times'].first['wait']
     }.each { |route|
-      route['wait_times'].each { |wait| wait['wait'] = [0, wait['wait']].max }
+      route['wait_times'].each { |wait| 
+        if wait['wait'] <= 0
+          wait['wait'] = 'DUE'
+        else
+          wait['wait'] = wait['wait'].to_s
+        end
+      }
     }
 
     @data = { 
