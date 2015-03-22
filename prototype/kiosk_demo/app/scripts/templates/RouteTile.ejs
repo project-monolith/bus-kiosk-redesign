@@ -6,7 +6,7 @@
     <h2>Minutes</h2>
     <ul class="bus-route--waittimes">
       <% for(var i=0; i< wait_times.length; i++) {%>
-        <% if (wait_times[i].wait > 0) {%>
+        <% if (wait_times[i].wait == "DUE"|| wait_times[i].wait > 0) {%>
            <li class="bus-route--waittimes-item"><%= wait_times[i].wait %></li>
         <% } %>
       <% } %>
