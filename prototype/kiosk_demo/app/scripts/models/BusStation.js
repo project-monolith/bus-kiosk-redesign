@@ -25,6 +25,7 @@ Kiosk.Models = Kiosk.Models || {};
         this.set("name", response.name);
         this.set("id", response.id);
         this.get("bus_routes").set(response.routes);
+        this.get("bus_routes").comparator = "order";
         return response;
       }
     });
