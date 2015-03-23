@@ -23,9 +23,10 @@ Our approach is the following:
 * Kyle McFarland
 * Avery Sauer
 * Jeff Hammerquist
-* Matt Leber
+* Matt Leber, Transit Operator @ Metro (https://twitter.com/VeloBusDriver)
 * Alice Feng
 * Timothy Shaw
+* Will Green, Client Systems Admin @ Tableau (http://twitter.com/kilodelta)
 
 ## Technologies, APIs, and Datasets Utilized
 
