@@ -2,7 +2,7 @@
 
 
 
-We're going to redesign the web app that runs in the kiosks on 3rd Ave.
+We're going to redesign the web app that runs in the kiosks on 3rd Ave. "Better Bus Info!"
 
 ## Challenge and Approach
 
