@@ -64,13 +64,12 @@ class Stop
     end
 
     @proximal = {
-   								 'id' => @code,
-   								 'name' => @name,
-   								 'lat' => @coords.lat,
-   								 'lon' => @coords.lon,
-   								 'proximals' => @@proximals[@stop_id]
-   								}
-#    @proximal << @@proximals[@stop_id]
+                  'id' => @code,
+                  'name' => @name,
+                  'lat' => @coords.lat,
+                  'lon' => @coords.lon,
+                  'proximals' => @@proximals[@stop_id]
+                }
   end
 
   STOP_INFO_URI = 'http://api.pugetsound.onebusaway.org/api/where/stop/%s.json?key=%s'
