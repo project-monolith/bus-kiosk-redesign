@@ -94,5 +94,5 @@ http://developer.onebusaway.org/modules/onebusaway-application-modules/1.1.13/ap
 Get connected with the team:
 https://plus.google.com/hangouts/_/gvpy2bqi36up6sd4xc5orcncg4a
 
-Steve Blanks legendary starup resources:
+Steve Blanks legendary startup resources:
 http://steveblank.com/tools-and-blogs-for-entrepreneurs/
