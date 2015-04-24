@@ -34,7 +34,7 @@ In developing our prototype, we made use of:
 
 * Ruby with Sinatra/Thin for the backend service.
 * backbone.js, jQuery, Isotope for the front end.
-* One Bus Away REST API for static and real-time transit system data.
+* OneBusAway REST API for static and real-time transit system data.
 * Mapbox.
 * GTFS data provided by Sound Transit.
 
