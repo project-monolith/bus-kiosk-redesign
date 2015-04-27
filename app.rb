@@ -24,7 +24,7 @@ class KioskDisplay < Sinatra::Base
     body "Hello World!"
   end
 
-  MAX_N_DISPLAYED = 9
+  MAX_N_DISPLAYED = 6
 
   # this returns the first 9 routes in the list
   get '/stops/:stop_id/trips' do
