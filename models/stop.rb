@@ -143,7 +143,7 @@ class Stop
       route['order'] = i
       route['wait_times'].each { |wait| 
         if wait['wait'] <= 0
-          wait['wait'] = 'DUE'
+          wait['wait'] = 'NOW'
         else
           wait['wait'] = wait['wait'].to_s
         end
