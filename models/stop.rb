@@ -139,6 +139,8 @@ class Stop
       }
     }.sort_by { |route| 
       route['wait_times'].first['wait']
+    }.drop_while { |route|
+      route['wait_times'].first['wait'] < -1
     }.each_with_index { |route, i|
       route['order'] = i
       route['wait_times'].each { |wait| 
