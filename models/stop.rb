@@ -137,10 +137,13 @@ class Stop
         'description' => route.description,
         'wait_times' => wait_times
       }
+    }.each { |route|
+      route['wait_times'] =
+        route['wait_times'].drop_while { |trip| trip['wait'] < -1 }
+    }.reject { |route|
+      route['wait_times'].empty?
     }.sort_by { |route| 
       route['wait_times'].first['wait']
-    }.drop_while { |route|
-      route['wait_times'].first['wait'] < -1
     }.each_with_index { |route, i|
       route['order'] = i
       route['wait_times'].each { |wait| 
